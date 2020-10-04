@@ -3,37 +3,48 @@ const readline = require("readline");
 
 const rl = readline.createInterface({ input: process.stdin });
 
-const inputs = [];
 let firstLine = true;
 
 rl.on("line", (chunk) => {
   if (firstLine) firstLine = false;
-  else inputs.push(Number(chunk));
+  else processInput(Number(chunk));
 });
 
-rl.on("close", () => {
-  processInputs();
-});
+function dec2bin(dec) {
+  return dec.toString(2);
+}
 
-function processInputs() {
-  for (let input of inputs) {
-    const nearestPerfectSquare = Math.floor(Math.sqrt(input));
-    const nearestSquare = Math.pow(nearestPerfectSquare, 2);
-    console.log(nearestPerfectSquare);
-    const nearestSquareIndex = nearestSquare + nearestPerfectSquare;
-    let inputQuotient;
-    if (nearestSquareIndex === input || nearestSquareIndex - 1 === input) {
-      inputQuotient = nearestSquare;
-    } else if (input > nearestSquareIndex) {
-      const diff = input - nearestSquareIndex;
-      inputQuotient = nearestSquare + diff;
-    } else if (nearestSquareIndex > input) {
-      const diff = nearestSquareIndex - input;
-      inputQuotient = nearestSquare - diff + 1;
-    }
-    console.log(inputQuotient);
+// 2^1,2^3,2^5,2^7,2^9,2^11,2^13
+function processInput(input) {
+  let inputBitsLength = dec2bin(input).length;
+  let msbSize;
+  let binaryLengthMinusMSB;
+  let msb;
+  let msbValue;
+  if (inputBitsLength % 2 !== 0) {
+    msbSize = (inputBitsLength + 1) / 2;
+    binaryLengthMinusMSB = inputBitsLength - msbSize + 1;
+    msb = input >>> binaryLengthMinusMSB;
+    msbValue = msb << (binaryLengthMinusMSB - 1);
+  } else {
+    msbSize = inputBitsLength / 2;
+    binaryLengthMinusMSB = inputBitsLength - msbSize;
+    msb = input >>> binaryLengthMinusMSB;
+    msbValue = msb << binaryLengthMinusMSB;
   }
+  const nearestRepeatedIndex = msbValue;
+  const nearestRepeatedIndexValue = nearestRepeatedIndex - msb;
+  if (nearestRepeatedIndex === input) {
+    inputQuotient = nearestRepeatedIndexValue;
+  } else {
+    const diff = input - nearestRepeatedIndex;
+    inputQuotient = nearestRepeatedIndexValue + diff;
+  }
+  console.log(input, inputQuotient, nearestRepeatedIndex);
 }
 
 // 649420617345
+// 252089752599
+
 // 649419998010
+// 252089271776
