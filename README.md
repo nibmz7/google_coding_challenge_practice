@@ -8,3 +8,4 @@
 - [Let Us Understand Computer - (UNSOLVED)](https://www.hackerearth.com/practice/basic-programming/operators/basics-of-operators/practice-problems/algorithm/let-us-understand-computer-78476e7a/)
 - [Intelligent Girl](https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/practice-problems/algorithm/intelligent-girl-1/)
 - [Maximum subarray](https://leetcode.com/problems/maximum-subarray)
+- [Power set](https://www.geeksforgeeks.org/power-set/)
