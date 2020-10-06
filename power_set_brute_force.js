@@ -3,7 +3,7 @@ const readline = require("readline");
 const rl = readline.createInterface({ input: process.stdin });
 
 rl.on("line", (chunk) => {
-  powerSet(chunk.split(""));
+  powerSet(Array.from(chunk));
 });
 
 function powerSet(data) {
@@ -20,5 +20,5 @@ function powerSet(data) {
     }
     powerSet.push(subset);
   }
-  console.log(powerSet);
+  powerSet.forEach(subset => console.log(subset))
 }
