@@ -24,7 +24,7 @@ class Node {
     if (this.sum > sum) return [];
     if (this.children.length === 0) return [];
     const nodes = [];
-    const parents = [...this.parents, this.digit];
+    const parents = this.value;
     for (const [index, value] of this.children.entries()) {
       const remaining = this.children.slice(index + 1);
       nodes.push(new Node(value, parents, remaining));
@@ -33,6 +33,7 @@ class Node {
   }
 
   get value() {
+    if(!this.digit) return this.parents; 
     return [...this.parents, this.digit];
   }
 
@@ -43,17 +44,12 @@ class Node {
 
 class Tree {
   constructor(nums) {
-    const children = [];
-    for (const [index, value] of nums.entries()) {
-      const node = new Node(value, [], nums.slice(index + 1));
-      children.push(node);
-    }
-    this.root = children;
+    this.root = new Node(null, [], nums);
   }
 
   traverseDF(sum) {
-    console.log(sum + ' ------------');
-    const collection = [...this.root];
+    console.log(sum + " ------------");
+    const collection = [...this.root.getChildNodes(sum)];
 
     while (collection.length > 0) {
       const node = collection.shift();
@@ -64,7 +60,7 @@ class Tree {
         collection.unshift(...node.getChildNodes(sum));
       }
     }
-    console.log('---------------');
+    console.log("---------------");
   }
 }
 
