@@ -11,18 +11,19 @@ function processInput(target = 0) {
 }
 
 function getMinNoOfDays(target = 0) {
-  if (target === 1 || target === 2) return target;
-  const targetPrinters = Math.floor(target * 0.8);
+  const targetPrinterCount = Math.floor(target * 0.8);
   let printerCount = 1;
   let statuesPrinted = 0;
   let daysCount = 0;
   while (statuesPrinted < target) {
     daysCount++;
     if (statuesPrinted + printerCount >= target) break;
-    const printerPrinting = printerCount - targetPrinters;
-    statuesPrinted += printerPrinting > 0 ? printerPrinting : 0;
-    printerCount +=
-      printerCount > targetPrinters ? targetPrinters : printerCount;
+    if (printerCount < targetPrinterCount) {
+      printerCount += printerCount;
+      continue;
+    }
+    printerCount += targetPrinterCount;
+    statuesPrinted += printerCount - targetPrinterCount;
   }
   return daysCount;
 }
