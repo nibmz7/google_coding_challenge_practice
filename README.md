@@ -14,4 +14,5 @@
     - [Breadth-first vs Depth-first Tree Traversal](https://medium.com/@kenny.hom27/breadth-first-vs-depth-first-tree-traversal-in-javascript-48df2ebfc6d1)
     - [The Breadth-First Search Algorithm](https://medium.com/edureka/breadth-first-search-algorithm-17d2c72f0eaa)
 - [Size of the smallest subset with maximum Bitwise OR](https://www.geeksforgeeks.org/size-of-the-smallest-subset-with-maximum-bitwise-or/)
+- [3D Printer Statues](https://open.kattis.com/problems/3dprinter)
 
