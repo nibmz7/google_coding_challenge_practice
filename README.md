@@ -1,5 +1,9 @@
 # google_coding_challenge_practice
 
+### Instructions
+1. `cd` to directory
+2. run `node index.js < input.txt`
+
 ### Problems
 
 - [Magical word](https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/magical-word/)
