@@ -21,4 +21,5 @@
 - [3D Printer Statues](https://open.kattis.com/problems/3dprinter)
 - [Nine Knights](https://open.kattis.com/problems/nineknights)
 - [Knight Jump](https://open.kattis.com/problems/knightjump)
+- [Path Tracing](https://open.kattis.com/problems/pathtracing)
 
