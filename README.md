@@ -22,4 +22,5 @@
 - [Nine Knights](https://open.kattis.com/problems/nineknights)
 - [Knight Jump](https://open.kattis.com/problems/knightjump)
 - [Path Tracing](https://open.kattis.com/problems/pathtracing)
+- [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
 
