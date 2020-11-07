@@ -24,4 +24,5 @@
 - [Path Tracing](https://open.kattis.com/problems/pathtracing)
 - [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
 - [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 

@@ -40,33 +40,34 @@ function getInput() {
 function getNextMoves(
   input = {},
   posArray = [],
-  visitedPos = {},
+  visitedPos = { "0,0": true },
   stepCount = 0
 ) {
   const nextMoves = [];
   for (const { x, y } of posArray) {
     if (x === 0 && y === 0) return stepCount;
-    const key = `${x},${y}`;
-    if (key in visitedPos) continue;
-    else {
-      visitedPos[key] = true;
-      const newMove = (x, y) => {
-        if (x === 0 && y === 0) return true;
-        if (x >= 0 && x <= input.maxX && y >= 0 && y <= input.maxY)
-          if (input.board[y][x] !== "#") nextMoves.push({ x, y });
-        return false;
-      };
-      const found =
-        newMove(x + 1, y + 2) ||
-        newMove(x - 1, y + 2) ||
-        newMove(x + 1, y - 2) ||
-        newMove(x - 1, y - 2) ||
-        newMove(x + 2, y + 1) ||
-        newMove(x - 2, y + 1) ||
-        newMove(x + 2, y - 1) ||
-        newMove(x - 2, y - 1);
-      if (found) return stepCount + 1;
-    }
+    const newMove = (x, y) => {
+      if (x === 0 && y === 0) return true;
+      if (x >= 0 && x <= input.maxX && y >= 0 && y <= input.maxY)
+        if (input.board[y][x] !== "#") {
+          const key = `${x},${y}`;
+          if (!(key in visitedPos)) {
+            visitedPos[key] = true;
+            nextMoves.push({ x, y });
+          }
+        }
+      return false;
+    };
+    const found =
+      newMove(x + 1, y + 2) ||
+      newMove(x - 1, y + 2) ||
+      newMove(x + 1, y - 2) ||
+      newMove(x - 1, y - 2) ||
+      newMove(x + 2, y + 1) ||
+      newMove(x - 2, y + 1) ||
+      newMove(x + 2, y - 1) ||
+      newMove(x - 2, y - 1);
+    if (found) return stepCount + 1;
   }
   if (nextMoves.length === 0) return -1;
   return getNextMoves(input, nextMoves, visitedPos, stepCount + 1);

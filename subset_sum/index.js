@@ -1,3 +1,57 @@
+class Node {
+  constructor(value, children, parent = { nums: [], sum: 0 }) {
+    this.nums = [...parent.nums, value];
+    this.children = children;
+    this.value = value;
+    this.sum = value + parent.sum;
+  }
+
+  getChildNodes(targetSum) {
+    const nodes = [];
+    for (const [index, num] of this.children.entries()) {
+      const nextSum = num + this.sum;
+      if (nextSum <= targetSum) {
+        const remaining = this.children.slice(index + 1);
+        const node = new Node(num, remaining, this);
+        nodes.push(node);
+      }
+    }
+    return nodes;
+  }
+}
+
+class Tree {
+  constructor(nums) {
+    const collection = [];
+    for (const [index, num] of nums.entries()) {
+      const node = new Node(num, nums.slice(index));
+      collection.push(node);
+    }
+    this.collection = collection;
+  }
+
+  traverseDF(targetSum) {
+    const collection = this.collection.slice();
+    console.log(collection[0].children + " --- sum: " + targetSum);
+
+    while (collection.length > 0) {
+      const node = collection.shift();
+
+      if (node.sum === targetSum) {
+        console.log(node.nums);
+      }
+      collection.unshift(...node.getChildNodes(targetSum));
+    }
+
+    console.log("---------------");
+  }
+}
+
+function subsetSum(nums, targetSum) {
+  const tree = new Tree(nums);
+  tree.traverseDF(targetSum);
+}
+
 const readline = require("readline");
 
 const rl = readline.createInterface({ input: process.stdin });
@@ -12,59 +66,3 @@ rl.on("line", (chunk) => {
   }
   sumInput = !sumInput;
 });
-
-class Node {
-  constructor(digit, parents, children) {
-    this.digit = digit;
-    this.parents = parents;
-    this.children = children;
-  }
-
-  getChildNodes(sum) {
-    if (this.sum > sum) return [];
-    if (this.children.length === 0) return [];
-    const nodes = [];
-    const parents = this.value;
-    for (const [index, value] of this.children.entries()) {
-      const remaining = this.children.slice(index + 1);
-      nodes.push(new Node(value, parents, remaining));
-    }
-    return nodes;
-  }
-
-  get value() {
-    if(!this.digit) return this.parents; 
-    return [...this.parents, this.digit];
-  }
-
-  get sum() {
-    return this.value.reduce((value, acc) => value + acc, 0);
-  }
-}
-
-class Tree {
-  constructor(nums) {
-    this.root = new Node(null, [], nums);
-  }
-
-  traverseDF(sum) {
-    console.log(sum + " ------------");
-    const collection = [...this.root.getChildNodes(sum)];
-
-    while (collection.length > 0) {
-      const node = collection.shift();
-
-      if (node.sum === sum) {
-        console.log(node.value);
-      } else {
-        collection.unshift(...node.getChildNodes(sum));
-      }
-    }
-    console.log("---------------");
-  }
-}
-
-function subsetSum(nums, targetSum) {
-  const tree = new Tree(nums);
-  tree.traverseDF(targetSum);
-}
