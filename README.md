@@ -25,5 +25,7 @@
 - [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
 - [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
 - [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
-- [Permutation](https://medium.com/weekly-webtips/step-by-step-guide-to-array-permutation-using-recursion-in-javascript-4e76188b88ff)
+- [Permutation](https://medium.com/weekly-webtips/
+step-by-step-guide-to-array-permutation-using-recursion-in-javascript-4e76188b88ff)
+- [Parse Array String into An Array Object] 
 
