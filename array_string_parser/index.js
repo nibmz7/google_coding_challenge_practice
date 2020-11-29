@@ -1,7 +1,7 @@
-console.log(parseArray("[]"));
-console.log(parseArray("[1, 2, 3]"));
-console.log(parseArray("[1, [2, [3, 7], 4], 5]"));
-console.log(parseArray("[1, [2, [34, 4], 4], 5, [8, 0, 1]]"));
+console.log(parseArray2("[]"));
+console.log(parseArray2("[1, 2, 3]"));
+console.log(parseArray2("[1, [2, [3, 7], 4], 5]"));
+console.log(parseArray2("[1, [2, [34, 4], 4], 5, [8, 0, 1]]"));
 
 function parseArray(str) {
   const START_BRACKET = "[";
@@ -40,4 +40,40 @@ function parseArray(str) {
   return result;
 }
 
+//Theoretically faster O(n)
+function parseArray2(str) {
+  const OPEN_BRACKET = "[";
+  const CLOSE_BRACKET = "]";
+  const mainArrayString = str.replace(/\s/g, "").slice(1);
 
+  const lastIndex = mainArrayString.length - 1;
+  let currentItem = "";
+  let currentIndex = 0;
+
+  const getSubArray = () => {
+    const result = [];
+    while (currentIndex <= lastIndex) {
+      const char = mainArrayString[currentIndex];
+      currentIndex++;
+
+      if (char === OPEN_BRACKET) {
+        const subArray = getSubArray();
+        result.push(subArray);
+        continue;
+      }
+
+      if (char === "," || char === CLOSE_BRACKET) {
+        if (currentItem.length > 0) {
+          result.push(Number(currentItem));
+          currentItem = "";
+        }
+      } else {
+        currentItem += char;
+      }
+
+      if (char === CLOSE_BRACKET) return result;
+    }
+  };
+
+  return getSubArray(mainArrayString);
+}
