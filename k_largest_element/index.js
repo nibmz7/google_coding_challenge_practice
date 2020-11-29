@@ -1,25 +1,29 @@
-const readline = require("readline");
-const rl = readline.createInterface({ input: process.stdin });
+const findKthLargest = (nums = [], k = 0) => {
+  const count = {};
 
-function getInput() {
-  return new Promise((res) => {
-    let nums, k;
-    rl.on("line", (line) => {
-      if (!k) {
-        k = Number(line);
-        return;
+  for (const num of nums) {
+    if(num < 0)
+      count[num] = true;
+      else {
+        count[`a-${num}`] = true;
       }
-      nums = line.split(",").map(Number);
-    });
+    
+  }
 
-    rl.on("close", () => res({ k, nums }));
-  });
-}
+  console.log(count);
+  // let result = null;
 
-async function solve() {
-    const {k, nums} = await getInput();
-    console.log(k, nums);
-    const big
-}
+  // console.log(count);
 
-solve();
+  // count.reduceRight((prevValue, indexValue, index) => {
+  //   const nextValue = prevValue + indexValue;
+  //   if(result === null && nextValue >= k) result = index;
+  //   return nextValue;
+  // }, 0);
+
+  // return result;
+};
+
+// console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2));
+console.log(findKthLargest([3,2,3,1,2,4,5,5,6,-7], 4));
+
