@@ -59,19 +59,24 @@ function parseArray2(str) {
       if (char === OPEN_BRACKET) {
         const subArray = getSubArray();
         result.push(subArray);
+        const nextChar = mainArrayString[currentIndex];
+        if(nextChar === ',') currentIndex++;
+        if(nextChar === CLOSE_BRACKET) {
+          return result;
+        }
         continue;
       }
 
       if (char === "," || char === CLOSE_BRACKET) {
-        if (currentItem.length > 0) {
-          result.push(Number(currentItem));
-          currentItem = "";
-        }
+        result.push(Number(currentItem));
+        currentItem = "";
       } else {
         currentItem += char;
       }
 
-      if (char === CLOSE_BRACKET) return result;
+      if (char === CLOSE_BRACKET) {
+        return result;
+      }
     }
   };
 
