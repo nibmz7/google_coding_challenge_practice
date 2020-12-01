@@ -33,5 +33,6 @@
 - [Four Sum](https://leetcode.com/problems/4sum/)
 - [Four Sum II](https://leetcode.com/problems/4sum-ii/)
     - [Solution Based On](https://medium.com/@hylei_73413/4-sum-cf5e47f36126)
-
+- [Longest Word](https://leetcode.com/problems/longest-word-in-dictionary/)
+    - [Solution Based on](https://leetcode.com/problems/longest-word-in-dictionary/discuss/109119/Simple-JavaScript-Solution)
 
