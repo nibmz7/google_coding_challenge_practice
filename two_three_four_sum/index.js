@@ -148,8 +148,8 @@ function threeSumClosest(nums, target) {
 }
 
 // console.log(fourSum([1, 0, -1, 0, -2, 2], 0));
-console.log(fourSum([-2, -1, -1, 1, 1, 2, 2], 0));
-console.log(fourSum([0, 0, 0, 0], 0));
+// console.log(fourSum([-2, -1, -1, 1, 1, 2, 2], 0));
+// console.log(fourSum([0, 0, 0, 0], 0));
 
 function fourSum(nums, target) {
   const result = [];
@@ -201,4 +201,31 @@ function fourSum(nums, target) {
   }
 
   return result;
+}
+
+// console.log(fourSumCount([1, 2], [-2, -1], [-1, 2], [0, 2]));
+console.log(fourSumCount([0, 1, -1], [-1, 1, 0], [0, 0, 1], [-1, 1, 1]));
+
+function fourSumCount(A, B, C, D) {
+  let count = 0;
+
+  const E = new Map();
+
+  for (const a of A) {
+    for (const b of B) {
+      const sum = a + b;
+      const sumCount = E.get(sum) || 0;
+      E.set(sum, sumCount + 1);
+    }
+  }
+
+  for (const c of C) {
+    for (const d of D) {
+      const sum = c + d;
+      const difference = 0 - sum;
+      count += E.get(difference) || 0;
+    }
+  }
+
+  return count;
 }

@@ -31,5 +31,7 @@
 - [Three Sum](https://leetcode.com/problems/3sum/)
 - [Three Sum Closest](https://leetcode.com/problems/3sum-closest/)
 - [Four Sum](https://leetcode.com/problems/4sum/)
+- [Four Sum II](https://leetcode.com/problems/4sum-ii/)
+    - [Solution Based On](https://medium.com/@hylei_73413/4-sum-cf5e47f36126)
 
 
