@@ -28,5 +28,6 @@
 - [Permutation](https://medium.com/weekly-webtips/step-by-step-guide-to-array-permutation-using-recursion-in-javascript-4e76188b88ff)
 - Parse Array String to get An Array Object
 - [Two Sum](https://leetcode.com/problems/two-sum/)
+- [Three Sum](https://leetcode.com/problems/3sum/)
 
 
