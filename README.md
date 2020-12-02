@@ -37,3 +37,4 @@
     - [Solution Based oOn](https://leetcode.com/problems/longest-word-in-dictionary/discuss/109119/Simple-JavaScript-Solution)
 - [Minimum Area Rectangle](https://leetcode.com/problems/minimum-area-rectangle/)
     - [Solution Based On](https://www.geeksforgeeks.org/find-minimum-area-of-rectangle-with-given-set-of-coordinates/)
+    - [Solution II Based On](https://leetcode.com/problems/minimum-area-rectangle/discuss/417879/Javascript-Solution)

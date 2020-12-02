@@ -37,8 +37,32 @@ const minAreaRect = (points) => {
   return currentArea < Number.MAX_VALUE ? currentArea : 0;
 };
 
+const minAreaRect2 = (points) => {
+  const xMap = {};
+  for (const point of points) {
+    const [x, y] = point;
+    if (xMap[x] == null) xMap[x] = {};
+    xMap[x][y] = true;
+  }
+
+  let minimumArea = Number.MAX_VALUE;
+
+  for (let i = 0; i < points.length; i++) {
+    const [x1, y1] = points[i];
+    for (let j = i + 1; j < points.length; j++) {
+      const [x2, y2] = points[j];
+      if(x1 === x2 || y1 === y2) continue;
+      if (xMap[x1][y2] && xMap[x2][y1]) {
+        const newArea = Math.abs((x2 - x1) * (y2 - y1));
+        minimumArea = Math.min(newArea, minimumArea);
+      }
+    }
+  }
+  return minimumArea < Number.MAX_VALUE ? minimumArea : 0;
+};
+
 console.log(
-  minAreaRect([
+  minAreaRect2([
     [1, 1],
     [1, 3],
     [3, 3],
@@ -48,7 +72,7 @@ console.log(
 );
 
 console.log(
-  minAreaRect([
+  minAreaRect2([
     [1, 1],
     [1, 3],
     [3, 1],
