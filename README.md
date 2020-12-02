@@ -38,3 +38,4 @@
 - [Minimum Area Rectangle](https://leetcode.com/problems/minimum-area-rectangle/)
     - [Solution Based On](https://www.geeksforgeeks.org/find-minimum-area-of-rectangle-with-given-set-of-coordinates/)
     - [Solution II Based On](https://leetcode.com/problems/minimum-area-rectangle/discuss/417879/Javascript-Solution)
+- [Implement Magic Dictionary](https://leetcode.com/problems/implement-magic-dictionary/)
